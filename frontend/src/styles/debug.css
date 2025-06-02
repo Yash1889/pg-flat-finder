@@ -1,0 +1,50 @@
+/* Debug CSS to fix white screen issues */
+html, body, #root {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+#root {
+  background-color: #f9fafb;
+  color: #333;
+}
+
+/* Reset all potentially problematic CSS */
+* {
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: revert;
+  position: revert;
+  z-index: revert;
+  transform: none !important;
+  pointer-events: auto !important;
+}
+
+/* Force elements to be visible */
+div, section, main, header, footer, nav {
+  display: block;
+  min-height: 10px;
+  border: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+/* Animation fix */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Force text to be visible */
+h1, h2, h3, h4, h5, h6, p, span, a {
+  color: #333 !important;
+  text-shadow: none !important;
+  background-color: transparent !important;
+}
+
+/* Debugging outlines */
+.container-custom, .hero-section, .search-form, .features-grid, .section-header {
+  outline: 2px solid rgba(79, 70, 229, 0.3);
+  padding: 10px !important;
+  margin: 10px !important;
+}

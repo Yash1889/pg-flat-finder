@@ -1,0 +1,45 @@
+/* Critical CSS fixes for white screen issues */
+
+/* Ensure body and root have proper dimensions */
+html, body, #root {
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+/* Ensure content is visible with contrasting colors */
+body {
+  background-color: #f9fafb;
+  color: #111827;
+}
+
+/* Force all elements to be visible */
+#root > * {
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: block !important;
+  color: #111827 !important;
+  background-color: #ffffff !important;
+  transform: none !important;
+  position: static !important;
+  z-index: 1 !important;
+  height: auto !important;
+  width: auto !important;
+  margin: 10px !important;
+  padding: 10px !important;
+  border: 1px solid #e5e7eb !important;
+}
+
+/* Force text to be visible */
+h1, h2, h3, p, span, a, button, input {
+  color: #111827 !important;
+  background-color: transparent !important;
+  text-shadow: none !important;
+}
+
+/* Add outlines to help visualize containers */
+div, section, article, header, footer, nav, aside, main {
+  outline: 1px solid rgba(79, 70, 229, 0.2) !important;
+}

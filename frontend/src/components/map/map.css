@@ -1,0 +1,49 @@
+.custom-marker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.marker-pin {
+  width: 30px;
+  height: 30px;
+  border-radius: 50% 50% 50% 0;
+  background-color: white;
+  position: relative;
+  transform: rotate(-45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.marker-pin::after {
+  content: '';
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  transform: rotate(45deg);
+}
+
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+.property-popup .leaflet-popup-content-wrapper {
+  border-radius: 0.5rem;
+  padding: 0;
+}
+
+.property-popup .leaflet-popup-content {
+  margin: 0;
+  width: auto !important;
+  min-width: 200px;
+}
+
+.property-popup .leaflet-popup-close-button {
+  color: #4f46e5;
+}

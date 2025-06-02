@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Standalone React Test</title>
+  <!-- Load React directly from CDN -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f2f5;
+    }
+    #standalone-root {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    .debug-info {
+      background-color: #4f46e5;
+      color: white;
+      padding: 1rem;
+      border-radius: 4px;
+      margin-top: 1rem;
+    }
+    .error-container {
+      background-color: #ffdddd;
+      color: #cc0000;
+      padding: 1rem;
+      border-radius: 4px;
+      margin-top: 1rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="standalone-root">Loading standalone React test...</div>
+  <div id="error-display" class="error-container"></div>
+
+  <script type="text/babel">
+    // Catch errors globally
+    window.addEventListener('error', (event) => {
+      console.error('Global error caught:', event.error);
+      document.getElementById('error-display').style.display = 'block';
+      document.getElementById('error-display').innerHTML = `
+        <h3>JavaScript Error Detected:</h3>
+        <pre>${event.error?.stack || event.message}</pre>
+      `;
+    });
+
+    // Simple React component
+    function StandaloneApp() {
+      const [counter, setCounter] = React.useState(0);
+      
+      return (
+        <div>
+          <h1 style={{color: '#4f46e5'}}>Standalone React Test</h1>
+          <p>This is a completely standalone React app loaded directly from CDN.</p>
+          <p>If you can see this, basic React rendering is working in your browser.</p>
+          
+          <button 
+            onClick={() => setCounter(prev => prev + 1)}
+            style={{
+              backgroundColor: '#4f46e5',
+              color: 'white',
+              padding: '0.5rem 1rem',
+              borderRadius: '4px',
+              border: 'none',
+              cursor: 'pointer',
+              marginRight: '1rem'
+            }}
+          >
+            Count: {counter}
+          </button>
+          
+          <div className="debug-info">
+            <h3>Debugging Next Steps:</h3>
+            <p>If this works but your main app doesn't:</p>
+            <ol>
+              <li>The issue is likely in your Vite setup or build process</li>
+              <li>Check for CSS conflicts making elements invisible</li>
+              <li>Make sure main.jsx is properly importing all dependencies</li>
+              <li>Verify the 'root' div exists in your index.html</li>
+            </ol>
+          </div>
+        </div>
+      );
+    }
+
+    // Render component with error handling
+    try {
+      console.log("Starting standalone React rendering");
+      const root = ReactDOM.createRoot(document.getElementById('standalone-root'));
+      root.render(<StandaloneApp />);
+      console.log("Standalone React rendering complete");
+    } catch (error) {
+      console.error("Fatal error during React initialization:", error);
+      document.getElementById('error-display').style.display = 'block';
+      document.getElementById('error-display').innerHTML = `
+        <h3>React Initialization Failed:</h3>
+        <pre>${error.stack || error.message || error}</pre>
+      `;
+    }
+  </script>
+</body>
+</html>

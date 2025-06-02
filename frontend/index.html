@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PG & Flat Finder | Find Your Perfect Accommodation</title>
+    <meta name="description" content="Find the perfect PG, flat, or apartment near your preferred location with our advanced search tools." />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Leaflet CSS -->
+    <link rel='stylesheet' href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css' 
+    integrity='sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=' 
+    crossorigin='' />
+    <!-- Leaflet Geosearch CSS -->
+    <link rel='stylesheet' href='https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css' />
+  </head>
+  <body>
+    <!-- This div will be replaced by React if it loads correctly -->
+    <div id="root">
+      <div style="padding: 2rem; max-width: 800px; margin: 2rem auto; background-color: #f9fafb; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        <h1 style="color: #4f46e5; font-size: 24px; margin-bottom: 1rem;">PG Flat Finder</h1>
+        <p style="margin-bottom: 1rem;">If you're seeing this message, it means React hasn't loaded yet.</p>
+        <div style="background-color: #fffbea; border-left: 4px solid #eab308; padding: 1rem; margin-bottom: 1rem;">
+          <p><strong>Troubleshooting:</strong> Check browser console for JavaScript errors</p>
+        </div>
+        <div id="error-display" style="background-color: #fee2e2; color: #b91c1c; padding: 1rem; border-radius: 4px; display: none;"></div>
+      </div>
+    </div>
+    
+    <!-- Error handling script before React loads -->
+    <script>
+      window.addEventListener('error', function(event) {
+        console.error('Global error caught:', event.error);
+        var errorDisplay = document.getElementById('error-display');
+        if (errorDisplay) {
+          errorDisplay.style.display = 'block';
+          errorDisplay.innerHTML = '<h3>JavaScript Error:</h3><p>' + (event.error?.message || event.message) + '</p>';
+        }
+      });
+    </script>
+    
+    <!-- Advanced debugging script -->
+    <script src="/debug.js"></script>
+    
+    <!-- Open browser console and check for errors -->
+    <script>
+      console.log('Index.html script execution');
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM fully loaded');
+        console.log('Root element exists:', !!document.getElementById('root'));
+      });
+    </script>
+    
+    <!-- React bundle (loads last) -->
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

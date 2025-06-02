@@ -1,0 +1,105 @@
+/* Critical visibility fixes for PG Flat Finder */
+
+/* Root and body elements - ensure proper display */
+html, body, #root {
+  display: block !important;
+  min-height: 100vh !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: auto !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* App container */
+.app-container, #root > div {
+  display: block !important;
+  min-height: 100vh !important;
+  width: 100% !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: relative !important;
+}
+
+/* Home container */
+.home-container {
+  display: block !important;
+  min-height: 100vh !important;
+  width: 100% !important;
+  overflow: visible !important;
+}
+
+/* Layout elements */
+main, header, footer, section, .main-content, .main-header, .main-footer {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  min-height: 20px !important;
+  overflow: visible !important;
+}
+
+/* Text elements */
+h1, h2, h3, h4, h5, h6, p, span, a, label, li {
+  opacity: 1 !important;
+  visibility: visible !important;
+  min-height: 1em !important;
+}
+
+/* Interactive elements */
+a, button, .nav-link, .search-button, .cta-button {
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Forms and inputs */
+input, select, textarea, form, .search-form, .search-input {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Cards and grid layouts */
+.feature-card, .location-card, .features-grid, .locations-grid {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  min-height: 50px !important;
+}
+
+/* Nav elements */
+.nav-list {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Hero section */
+.hero-section, .hero-content {
+  display: block !important;
+  min-height: 200px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Fix animation issues */
+* {
+  animation-play-state: running !important;
+  animation-duration: 0.01s !important;
+  transition-duration: 0.01s !important;
+}
+
+/* Ensure all containers have visible dimensions */
+div {
+  min-height: 1px !important;
+  min-width: 1px !important;
+}
+
+/* Router view container - ensure routes render */
+.app-container > div, [data-reactroot] {
+  display: block !important;
+  min-height: 100vh !important;
+  width: 100% !important;
+}
